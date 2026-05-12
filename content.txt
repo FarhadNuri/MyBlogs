@@ -1,0 +1,334 @@
+Hi👋,I'm Pitter
+Every project has a story. Every bug has a lesson. I'm Peter a developer who believes the best way to grow is to build, break, and reflect. This is where I share the journey the code, the process, and the ideas behind it all. Stick around, there's always something new in the works.
+
+Latest Articles
+Next.js App Router vs Pages Router: Which One Should You Use in 2026?
+
+The App Router changed everything about how we build with Next.js. But is it always the right choice? I compare both approaches with real examples — and share which one I reach for on new projects.
+
+A Brief History
+The Pages Router has been the foundation of Next.js since the beginning. It is file-based routing with a pages directory where each file becomes a route. It is mature, well-documented, and battle-tested in production across thousands of projects around the world.
+
+The App Router was introduced in Next.js 13 and became stable in version 14. It introduces React Server Components, nested layouts, streaming, and a completely new mental model for building applications.
+
+Key Differences
+The biggest difference is how data fetching works. In the Pages Router you use getServerSideProps or getStaticProps at the page level. In the App Router any component can be a server component that fetches its own data directly — making your code more colocated and easier to reason about. Layouts are another major difference. The App Router has built-in nested layouts that persist across navigation. This means your header and sidebar only render once and do not remount when you navigate between pages — which is a significant performance improvement.
+
+Which One Should You Use?
+For new projects in 2026 the answer is the App Router without hesitation. It is the direction Next.js is heading and all new features are being built for it. The Pages Router still works perfectly and will be supported for years but it will not receive new features. For existing projects I would not migrate just for the sake of it. If your Pages Router project is working well in production leave it alone. Migrate when you have a clear reason to do so such as needing nested layouts or wanting to take advantage of Server Components.
+
+
+Portable Text Explained: Rendering Rich Text from Sanity in Next.js
+
+Portable Text is how Sanity stores rich content — and it's
+more powerful than it looks. Learn how to render it in
+Next.js, customize block components, and style it beautifully
+using Tailwind's prose plugin.
+
+What is Portable Text?
+
+Portable Text is an open specification for rich text content.
+Instead of storing HTML or Markdown, Sanity stores your content
+as a structured array of block objects. This makes it flexible,
+future-proof, and easy to render on any platform — web, mobile,
+or even print.
+
+The Basic Setup
+
+Install the PortableText component from the next-sanity package.
+Import it in your component and pass your body array as the value
+prop. Out of the box it will render paragraphs, headings, bold
+text, italic text, and links without any extra configuration.
+
+Styling with Tailwind Typography
+
+The easiest way to style Portable Text is to wrap it in a div
+with the prose class from the Tailwind Typography plugin. Install
+the plugin, add it to your CSS file, and your rich text will
+look great instantly. Use prose-lg for larger text and
+dark:prose-invert for dark mode support.
+
+Custom Components
+
+The real power of PortableText comes from custom components.
+You can define how each block type is rendered by passing a
+components prop. This lets you render images with the Next.js
+Image component for optimization, add custom styling to
+blockquotes, and even embed interactive components inside
+your content.
+
+Images in Portable Text
+
+To render images inside your Portable Text you need to add
+image to your body array schema in Sanity. Then use the urlFor
+helper from your Sanity image builder to generate the correct
+image URL and render it with the Next.js Image component for
+automatic optimization.
+
+
+
+
+
+How to Build a Blog with Next.js 16 and Sanity in Under an Hour
+
+Step-by-step tutorial covering schema setup, GROQ queries,
+dynamic routing with slug, and Portable Text rendering.
+By the end you'll have a fully working blog ready to deploy.
+
+Step 1 Set Up Your Next.js Project
+
+Open your terminal and run npx create-next-app@latest my-blog.
+Choose TypeScript and the App Router when prompted. Once
+the installation is complete navigate into the project folder
+and install the Sanity packages by running npm install next-sanity.
+
+Step 2 — Create Your Sanity Project
+
+Go to sanity.io and create a free account. Create a new
+project and note your Project ID and dataset name. Create
+a .env.local file in your Next.js project and add your
+credentials as environment variables.
+
+Step 3 — Define Your Schema
+
+Create a schema folder inside your sanity directory.
+Define a post document type with fields for title, slug,
+publishedAt, image, and body. Register the schema in your
+Sanity config file and run the Studio locally to start
+adding content.
+
+Step 4 — Write Your Queries
+
+Create a queries file inside sanity/lib. Write a GROQ
+query to fetch all posts for the listing page and a
+separate query to fetch a single post by slug for the
+detail page. Keep your queries in one place so they
+are easy to find and update.
+
+Step 5 — Build Your Pages
+
+Create a blog listing page that fetches all posts and
+displays them as a list of links. Create a dynamic
+route folder named slug with a page file inside it.
+Fetch the individual post using the slug from the URL
+params and render the body using PortableText.
+
+Step 6 — Deploy
+
+Push your project to GitHub and connect it to Vercel.
+Add your environment variables in the Vercel dashboard
+and deploy. Your blog will be live in minutes.
+
+
+
+
+Understanding GROQ: The Query Language That Makes Sanity Powerful
+After trying WordPress, Contentful, and a few others, I kept
+coming back to Sanity. Here's an honest breakdown of why it
+fits so well with Next.js and the one thing I wish I knew
+before I started.
+
+The Problem with Other CMS Options
+
+WordPress felt like overkill for modern JavaScript projects.
+Contentful was powerful but expensive once you needed more
+than the basics. Prismic had a learning curve that slowed
+me down. I needed something flexible, developer-friendly,
+and affordable.
+
+Why Sanity Won
+
+The first thing that impressed me about Sanity was the schema.
+You define your content structure in plain JavaScript or
+TypeScript files that live right inside your project. This
+means your content model is version-controlled alongside
+your code — which is a huge win for teams and solo developers
+alike.
+
+The Studio is another big win. It is fully customizable.
+You can add custom input components, validation rules, and
+even custom previews. Editors love it because it is clean
+and intuitive. Developers love it because it bends to their
+will.
+
+GROQ is Underrated
+
+Sanity's query language GROQ took me a day to learn but
+has saved me countless hours since. Writing queries feels
+natural and the ability to project exactly the fields you
+need means your API responses are lean and fast.
+
+The One Thing I Wish I Knew
+
+Start with a clear content model before you write a single
+line of schema code. Changing your schema after you have
+published content can get messy. Spend an hour planning
+your document types, fields, and relationships first —
+your future self will thank you.
+
+
+
+
+
+Getting Started with Next.js and Sanity: A Complete Beginner's Guide
+
+Setting up your studio
+Quickstart for getting up and running with Sanity from scratch.
+
+1. Create a new Studio with Sanity CLI
+Run the command in your Terminal to initialize your project on your local computer.
+
+See the documentation if you are having issues with the CLI.
+
+Dataset visibility
+Sanity datasets are public by default. See dataset visibility for info about private datasets.
+
+npm create sanity@latest -- --dataset production --template clean --typescript --output-path blog-studio
+cd blog-studio
+
+2.Run Sanity Studio locally
+Inside the directory of the Studio, start the development server by running the following command.
+
+in blog-studio
+npm run dev
+
+3. Log in to the Studio
+Open the Studio running locally in your browser from http://localhost:3333.
+
+Defining a schema
+The Sanity Studio can only interact with documents in a dataset for which it has schema types registered in its configuration. It currently has none.
+
+1.Create a new document type
+Create a new file in your Studio’s schemaTypes folder called postType.ts with the code below which contains a set of fields for a new post document type.
+
+/studio-hello-world/schemaTypes/postType.ts
+
+import {defineType, defineField} from 'sanity'
+export const postType = defineType({name: 'post',title: 'Post',type: 'document',fields: [defineField({name: 'title',type: 'string',validation: (rule) => rule.required(), }),defineField({name: 'slug',type: 'slug',validation: (rule) => rule.required(), }),defineField({name: 'publishedAt',type: 'datetime',initialValue: () => new Date().toISOString(),validation: (rule) => rule.required(), }),defineField({name: 'body',type: 'array',of: [{type: 'block'}], }), ],})
+
+2.Register the post schema type to the Studio schema
+Now you can import this document type into the schemaTypes array in the index.ts file in the same folder.
+
+/studio-hello-world/schemaTypes/index.ts
+
+import {postType} from './postType'
+export const schemaTypes = [postType]
+
+3.Publish your first document
+When you save these two files, your Studio should automatically reload and show your first document type. Click the + symbol at the top left to create and publish a new post document.
+
+Displaying content in Next.js
+Query your content and render it in a Next.js app.
+
+1.Install a new Next.js application
+If you have an existing application, skip this first step and adapt the rest of the lesson to install Sanity dependencies to fetch and render content.
+
+Run the following in a new tab or window in your Terminal (keep the Studio running) to create a new Next.js application with Tailwind CSS and TypeScript.
+
+You should now have your Studio and Next.js application in two separate, adjacent folders:
+
+# outside your studio directory
+npx create-next-app@latest personal-blog-website --tailwind --ts --app --src-dir --eslint --import-alias "@/*" --turbopack
+cd personal-blog-website
+
+├─ /personal-blog-website
+└─ /blog-studio
+
+2.Install Sanity dependencies
+Run the following inside the nextjs-hello-world directory to install:
+
+next-sanity a collection of utilities for integrating Next.js with Sanity
+@sanity/image-url helper functions to take image data from Sanity and create a URL
+# in nextjs-hello-world
+npm install --legacy-peer-deps next-sanity @sanity/image-url
+
+3.Start the development server
+Run the following command and open http://localhost:3000 in your browser
+
+# in nextjs-hello-world
+npm run dev
+
+4.Configure the Sanity client
+To fetch content from Sanity, you’ll first need to configure a Sanity Client.
+
+Create a directory nextjs-hello-world/src/sanity and within it create a client.ts file, with the following code:
+
+/nextjs-hello-world/src/sanity/client.ts
+
+import { createClient } from "next-sanity";
+
+export const client = createClient({
+projectId: "YOUR-PROJECT-ID",
+dataset: "production",
+apiVersion: "2024-01-01",
+useCdn: false,
+});
+
+5.Display content on the homepage
+Next.js uses server components for loading data at specific routes. The current home page can be found at src/app/page.tsx.
+
+Update it to render a list of posts fetched from your Sanity dataset using the code below.
+
+/personal-blog-website/src/app/(home)/components/hero.tsx
+
+Deploying Studio and inviting editors
+Your Sanity Studio is still only running on your local computer. It's time to deploy and get it into the hands of other content editors.
+
+1.Deploy your Studio with Sanity
+In your Studio directory (blogo-studio) run the following command to deploy your Sanity Studio.
+
+The first time you run this command, the CLI will prompt you to enter a hostname. This is the unique name for your Studio's URL (entering my-app will make your Studio available at my-app.sanity.studio).
+
+npm run deploy
+
+
+
+
+
+
+
+What is nextjs?
+Next.js is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
+
+It also automatically configures lower-level tools like bundlers and compilers. You can instead focus on building your product and shipping quickly.
+
+Whether you're an individual developer or part of a larger team, Next.js can help you build interactive, dynamic, and fast React applications.
+
+
+
+
+My story
+Hey there! I'm Peter a developer, writer, and lifelong learner based in the heart of a city that never stops inspiring me. Welcome to my little corner of the internet.
+
+Where it all started
+My journey into the world of technology started back in college, when I accidentally broke a website and spent three days figuring out how to fix it. That frustration turned into curiosity, and that curiosity never left.
+
+Since then, I've worked across startups and large teams, building products that people actually use and occasionally breaking a few things along the way.
+
+What I write about
+This blog is where I share everything I'm learning from deep dives into web technologies to personal reflections on growth, creativity, and the craft of building things.
+
+Web development and modern frameworks
+Design systems and UI/UX thinking
+Career lessons and personal growth
+Tools and workflows that make life easier
+Beyond the screen
+When I'm not coding or writing, you'll find me exploring local coffee shops, reading anything I can get my hands on, or taking long walks while listening to podcasts about things I probably don't need to know.
+
+I believe the best ideas come from stepping away from the keyboard — so I try to do that as often as possible.
+
+Let's connect
+I'd love to hear from you. Whether you have a question, a project idea, or just want to say hello my inbox is always open. You can reach me on
+
+peter@example.com
+
+The best time to start was yesterday. The second best time is now.
+Thanks for stopping by I hope something here sparks a thought, solves a problem, or at the very least makes your day a little more interesting.
+
+
+
+
+Latest Blog Posts
+Fresh thoughts, tutorials, and stories updated regularly.
+
+© 2026 code by keencoding. Allrights reserved

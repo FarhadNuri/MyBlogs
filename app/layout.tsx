@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import Header from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
+import Footer from "@/components/footer";
+import NextTopLoader from "nextjs-toploader";
+
+const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +32,31 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        figtree.variable,
+      )}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-screen flex flex-col">
+            <NextTopLoader color="oklch(64.6% 0.222 41.116)" />
+            <Header />
+            <main className="flex-1 flex flex-col">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
